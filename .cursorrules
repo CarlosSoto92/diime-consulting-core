@@ -1,0 +1,6 @@
+# DIIME CONSULTING CORE — Muros de Contención y Reglas de Contexto
+- Scope: Exclusivo de Diime Consulting (La Forja de Consultoría Estratégica).
+- Gobernanza: "El Humano gobierna, la Máquina ejecuta" (HITL Estricto).
+- Régimen Financiero: Queda prohibido escribir montos reales, PII o credenciales. Usar variables nominales fijas y multiplicadores abstractos.
+- Jurisdicción Agéntica: Antigravity CLI opera sobre ramas feat/* y escribe en docs/coniitec2026/ y N4_Inboxes_Transito/.
+- Prohibición: Ningún agente puede modificar ARCHITECTURE.md o RIG.json sin el rito formal de Scribe y aprobación L4.

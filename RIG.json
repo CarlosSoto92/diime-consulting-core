@@ -1,0 +1,26 @@
+{
+  "$schema": "https://diimenet.com/schemas/rig-v1.json",
+  "repository": "diime-consulting-core",
+  "version": "1.0.0",
+  "node_origin": "WS-01",
+  "components": [
+    {
+      "name": "coniitec-deliverables",
+      "path": "docs/coniitec2026/deliverables",
+      "type": "documentation",
+      "status": "active"
+    },
+    {
+      "name": "interactive-web-demo",
+      "path": "docs/coniitec2026/web_demo",
+      "type": "mvp_ui",
+      "status": "scaffold"
+    },
+    {
+      "name": "agentic-transit-inbox",
+      "path": "N4_Inboxes_Transito/Inbox_DiimeConsulting",
+      "type": "governance_bus",
+      "status": "ready"
+    }
+  ]
+}
