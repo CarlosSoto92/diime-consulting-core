@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diime Consulting — CONIITEC 2026 Poster & Demo Interactiva</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --surface: #111827;
+      --surface-card: #162032;
+      --surface-hover: #1e293b;
+      --border: #24324d;
+      --border-accent: #3b82f6;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-card: #f1f5f9;
+      --surface-hover: #e2e8f0;
+      --border: #cbd5e1;
+      --border-accent: #2563eb;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent-cyan: #0891b2;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-purple: #7c3aed;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .badge-status {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+    }
+
+    .badge-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--surface-card);
+      padding: 0.3rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .nav-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-tab:hover {
+      color: var(--text);
+    }
+
+    .nav-tab.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    }
+
+    .theme-toggle-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Tab Content Views */
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .tab-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Banner / Hero */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(6, 182, 212, 0.15));
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.85rem;
+      max-width: 950px;
+      background: linear-gradient(to right, #ffffff, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .hero-title {
+      background: linear-gradient(to right, #0f172a, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      align-items: center;
+    }
+
+    .hero-meta-item strong {
+      color: var(--text);
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Card Component */
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card-icon {
+      font-size: 1.3rem;
+    }
+
+    /* Triad Architecture Interactive Nodes */
+    .triad-card {
+      border-top: 4px solid var(--primary);
+      position: relative;
+    }
+
+    .triad-card.node-notebooklm {
+      border-top-color: var(--accent-cyan);
+    }
+
+    .triad-card.node-gemini {
+      border-top-color: var(--accent-purple);
+    }
+
+    .triad-card.node-antigravity {
+      border-top-color: var(--accent-emerald);
+    }
+
+    .pill-step {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: var(--surface-hover);
+      color: var(--accent-cyan);
+    }
+
+    /* KPI Highlights */
+    .kpi-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .kpi-value {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    .kpi-value.cyan { color: var(--accent-cyan); }
+    .kpi-value.emerald { color: var(--accent-emerald); }
+    .kpi-value.amber { color: var(--accent-amber); }
+    .kpi-value.purple { color: var(--accent-purple); }
+
+    .kpi-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Simulator Controls */
+    .sim-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .slider-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .slider-val {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 4px;
+      background: var(--surface-hover);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+    }
+
+    /* Comparison Bars */
+    .comparison-container {
+      margin-top: 1.5rem;
+    }
+
+    .bar-row {
+      margin-bottom: 1.2rem;
+    }
+
+    .bar-label-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 24px;
+      background: var(--surface);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      padding-left: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      transition: width 0.5s ease;
+    }
+
+    .bar-fill.traditional {
+      background: linear-gradient(90deg, #64748b, #94a3b8);
+      width: 100%;
+    }
+
+    .bar-fill.diime {
+      background: linear-gradient(90deg, var(--primary), var(--accent-cyan));
+      width: 40%;
+    }
+
+    /* Audio Pitch Player */
+    .audio-player-card {
+      background: var(--surface);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-play {
+      background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+      border: none;
+      color: #ffffff;
+      padding: 0.75rem 1.6rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-play:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 1.25rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+    }
+
+    .waveform-visualizer {
+      height: 38px;
+      background: var(--surface-card);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+
+    .wave-bar {
+      width: 4px;
+      height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 2px;
+      transition: height 0.15s ease;
+    }
+
+    .playing .wave-bar {
+      animation: wave 1s infinite ease-in-out alternate;
+    }
+
+    @keyframes wave {
+      0% { height: 6px; }
+      100% { height: 28px; }
+    }
+
+    .teleprompter {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      max-height: 280px;
+      overflow-y: auto;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .teleprompter p {
+      margin-bottom: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .teleprompter p.active-line {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      background: rgba(6, 182, 212, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent-cyan);
+    }
+
+    /* Live Agent Simulation */
+    .agent-sim-console {
+      background: #050811;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      height: 300px;
+      overflow-y: auto;
+      margin-top: 1rem;
+    }
+
+    .console-log-line {
+      margin-bottom: 0.4rem;
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .log-ts { color: var(--text-muted); }
+    .log-tag { font-weight: 700; }
+    .log-tag.notebooklm { color: var(--accent-cyan); }
+    .log-tag.gemini { color: var(--accent-purple); }
+    .log-tag.antigravity { color: var(--accent-emerald); }
+    .log-tag.l4 { color: var(--accent-amber); }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Print / Poster Mode */
+    @media print {
+      header, .nav-tabs, .sim-panel, .audio-player-card, footer {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand-block">
+        <div class="brand-logo">DC</div>
+        <div class="brand-title">
+          <span>Diime Consulting</span>
+          <span class="brand-subtitle">CONIITEC 2026 Poster & Demo Portal</span>
+        </div>
+      </div>
+
+      <div class="nav-badges">
+        <div class="badge badge-status">
+          <span class="badge-pulse"></span>
+          <span>Tríada Google: Operacional</span>
+        </div>
+        <div class="badge">
+          <span>Rama: feat/coniitec2026-poster-demo</span>
+        </div>
+        <div class="badge">
+          <span>Kernel Diime-Ops v1.0.0</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <nav class="nav-tabs">
+          <button class="nav-tab active" data-tab="poster-view">
+            <span>📌</span> Póster Científico
+          </button>
+          <button class="nav-tab" data-tab="simulator-view">
+            <span>⚡</span> Simulador 60%
+          </button>
+          <button class="nav-tab" data-tab="triad-view">
+            <span>🏛️</span> Tríada Google
+          </button>
+          <button class="nav-tab" data-tab="pitch-view">
+            <span>🎙️</span> Pitch & Audio
+          </button>
+          <button class="nav-tab" data-tab="agent-sim-view">
+            <span>🤖</span> Pipeline Multi-Agente
+          </button>
+        </nav>
+
+        <button class="theme-toggle-btn" id="themeToggle" title="Cambiar tema">
+          🌓
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- TAB 1: PÓSTER CIENTÍFICO DIGITAL -->
+    <section id="poster-view" class="tab-view active">
+      <div class="hero-banner">
+        <div class="hero-tag">Congreso Internacional de Innovación Tecnológica (CONIITEC 2026)</div>
+        <h1 class="hero-title">Diime Consulting: Integración del Ecosistema de Inteligencia Artificial para la Optimización y Aceleración de Consultoría Estratégica</h1>
+        <p style="font-size: 1.1rem; max-width: 900px; color: var(--text);">
+          Arquitectura agéntica gobernada que fusiona <strong>Google NotebookLM</strong>, <strong>Google Gemini API</strong> y <strong>Google Antigravity</strong> para comprimir los ciclos de consultoría de semanas a días con cero alucinación documental.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">Autor Principal: <strong>Carlos Soto Santis</strong></div>
+          <div class="hero-meta-item">Afiliación: <strong>DiimeNET / Diime Consulting</strong></div>
+          <div class="hero-meta-item">Gobernanza: <strong>HITL L4 («El Humano gobierna, la Máquina ejecuta»)</strong></div>
+          <div class="hero-meta-item">Compresión Validada: <strong style="color: var(--accent-emerald);">60% en Tiempos de Entrega</strong></div>
+        </div>
+      </div>
+
+      <!-- Métricas Clave de Alto Nivel -->
+      <div class="grid-4">
+        <div class="kpi-box">
+          <div class="kpi-value cyan">60%</div>
+          <div class="kpi-label">Compresión de Ciclos</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">De 16 semanas a solo 4-6 semanas</p>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value emerald">100%</div>
+          <div class="kpi-label">Fidelidad de Grounding</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">Cero alucinación vía NotebookLM</p>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value purple">2.5×</div>
+          <div class="kpi-label">Velocidad de MVP</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">Despliegue de UIs con Antigravity</p>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value amber">HITL</div>
+          <div class="kpi-label">Gobernanza Rigurosa</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">Aprobación L4 en cada rito</div>
+        </div>
+      </div>
+
+      <!-- Contenido Estructurado del Póster -->
+      <div class="grid-2">
+        <!-- Tarjeta 1: Resumen y Problema -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><span class="card-icon">🎯</span> Contexto y Problema Crítico</h2>
+            <span class="badge">Diagnóstico</span>
+          </div>
+          <div style="font-size: 0.95rem; color: var(--text);">
+            <p style="margin-bottom: 0.85rem;">
+              En el entorno competitivo actual, la consultoría estratégica enfrenta graves barreras operativas:
+            </p>
+            <ul style="padding-left: 1.25rem; margin-bottom: 1rem; color: var(--text-muted);">
+              <li><strong>Tiempos de latencia excesivos:</strong> Levantamientos diagnósticos tradicionales demoran entre 8 y 16 semanas.</li>
+              <li><strong>Entregables estáticos y pasivos:</strong> Los clientes reciben reportes en PDF o presentaciones de diapositivas que rara vez se materializan en código o prototipos ejecutables.</li>
+              <li><strong>Riesgo de alucinaciones en LLMs genéricos:</strong> El uso informal de IA comercial provoca inconsistencias numéricas y fuga de confidencialidad.</li>
+            </ul>
+            <p>
+              <strong>Diime Consulting</strong> resuelve este paradigma estructurando un pipeline determinista donde la máquina ejecuta tareas de alta intensidad analítica y el consultor humano mantiene la soberanía de decisión.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: La Tríada Google -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title"><span class="card-icon">⚡</span> La Tríada Tecnológica Google</h2>
+            <span class="badge badge-status">Arquitectura</span>
+          </div>
+          <div style="font-size: 0.95rem; color: var(--text);">
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: var(--accent-cyan);">1. Google NotebookLM (Ingesta Curada):</strong>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Bóveda documental cerrada. Aísla manuales, contratos y datos del cliente para forzar síntesis analítica 100% libre de alucinaciones.</p>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: var(--accent-purple);">2. Google Gemini API & Python (Razonamiento):</strong>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Modelos avanzados multimodal con validación de esquemas JSON estrictos (Pydantic), matrices estratégicas y cálculo de escenarios.</p>
+            </div>
+            <div>
+              <strong style="color: var(--accent-emerald);">3. Google Antigravity (Prototipado y Sidecars):</strong>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Plataforma agéntica para orquestar agentes Coder/Scribe, desplegar extensiones y crear MVPs interactivos en horas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctrina de Gobernanza Diime-Ops -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <h2 class="card-title"><span class="card-icon">⚖️</span> Gobernanza Diime-Ops: Axioma de la Separación</h2>
+          <span class="badge">Regla Sagrada</span>
+        </div>
+        <div class="grid-3" style="margin-bottom: 0;">
+          <div style="background: var(--surface); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.4rem;">1. Coder (Agente)</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Implementa código, maquetación UI y genera documentación técnica en ramas tácticas <code>feat/*</code>. Prohibido tocar ramas maestras directamente.
+            </p>
+          </div>
+          <div style="background: var(--surface); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-weight: 700; color: var(--accent-purple); margin-bottom: 0.4rem;">2. Scribe (Auditor)</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Audita el cumplimiento doctrinal, verifica la ausencia de PII y confirma la integridad del Repository Intelligence Graph (RIG).
+            </p>
+          </div>
+          <div style="background: var(--surface); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-weight: 700; color: var(--accent-amber); margin-bottom: 0.4rem;">3. Humano L4 (Soberano)</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              «El Humano gobierna, la Máquina ejecuta». Ratifica las decisiones de arquitectura, evalúa el Handoff en buzón y aprueba fusiones a <code>demo</code> o <code>main</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: SIMULADOR INTERACTIVO 60% -->
+    <section id="simulator-view" class="tab-view">
+      <div class="hero-banner">
+        <div class="hero-tag">Simulador Dinámico de Compresión Temporal</div>
+        <h2 class="hero-title">Evaluador de Sprints: Consultoría Tradicional vs. Diime Consulting</h2>
+        <p style="font-size: 1.05rem; color: var(--text);">
+          Ajusta el alcance de la intervención empresarial para simular en tiempo real la reducción del 60% en el ciclo de entrega.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Panel de Parámetros -->
+        <div class="sim-panel">
+          <h3 style="font-size: 1.15rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>⚙️</span> Parámetros del Proyecto de Consultoría
+          </h3>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Volumen Documental (Fuentes / Reportes / Manuales)</span>
+              <span class="slider-val" id="docsVal">25 Documentos</span>
+            </div>
+            <input type="range" id="docsSlider" min="5" max="100" value="25" step="5">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Complejidad de Procesos de Negocio</span>
+              <span class="slider-val" id="compVal">Nivel Medio (6 Áreas)</span>
+            </div>
+            <input type="range" id="compSlider" min="1" max="10" value="6" step="1">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Alcance del Prototipo Técnico (MVP UI)</span>
+              <span class="slider-val" id="mvpVal">Tablero Interactivo + Simulador</span>
+            </div>
+            <input type="range" id="mvpSlider" min="1" max="3" value="2" step="1">
+          </div>
+
+          <div style="background: var(--surface-card); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted);">
+            💡 <em>La tasa de compresión temporal ($TC$) se deriva empíricamente de la sustitución de tareas mecánicas por la Tríada Google NotebookLM + Gemini + Antigravity.</em>
+          </div>
+        </div>
+
+        <!-- Resultados de la Simulación -->
+        <div class="sim-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <h3 style="font-size: 1.15rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>📊</span> Comparativa de Tiempos de Entrega
+          </h3>
+
+          <div class="comparison-container">
+            <div class="bar-row">
+              <div class="bar-label-group">
+                <span>Consultoría Tradicional (Consultores Manuales)</span>
+                <span id="tradWeeks" style="color: #94a3b8; font-weight: 700;">14.0 Semanas (70 Días)</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill traditional" id="tradBar">Tradicional: 100% del Tiempo</div>
+              </div>
+            </div>
+
+            <div class="bar-row">
+              <div class="bar-label-group">
+                <span>Diime Consulting (Tríada Tecnológica Google)</span>
+                <span id="diimeWeeks" style="color: var(--accent-cyan); font-weight: 700;">5.6 Semanas (28 Días)</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill diime" id="diimeBar">Diime: ~40% del Tiempo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top: 1.5rem; margin-bottom: 0;">
+            <div class="kpi-box" style="padding: 0.9rem;">
+              <div class="kpi-value cyan" id="timeSavedPct">60.0%</div>
+              <div class="kpi-label">Compresión Neta</div>
+            </div>
+            <div class="kpi-box" style="padding: 0.9rem;">
+              <div class="kpi-value emerald" id="daysSaved">42</div>
+              <div class="kpi-label">Días Ahorrados</div>
+            </div>
+            <div class="kpi-box" style="padding: 0.9rem;">
+              <div class="kpi-value purple" id="velocityMult">2.5×</div>
+              <div class="kpi-label">Velocidad Relativa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: TRÍADA TECNOLÓGICA GOOGLE -->
+    <section id="triad-view" class="tab-view">
+      <div class="hero-banner">
+        <div class="hero-tag">Arquitectura Técnica Multietapa</div>
+        <h2 class="hero-title">Los Tres Pilares de la Tríada Google en Diime Consulting</h2>
+        <p style="font-size: 1.05rem; color: var(--text);">
+          Flujo determinista de datos: desde la ingestión documental curada hasta el despliegue de software interactivo.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Pilar 1: NotebookLM -->
+        <div class="card triad-card node-notebooklm">
+          <div class="card-header">
+            <div>
+              <span class="pill-step">PILAR 1: INGESTA</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 0.3rem;">Google NotebookLM</h3>
+            </div>
+            <span style="font-size: 1.8rem;">📚</span>
+          </div>
+          <div style="font-size: 0.9rem; color: var(--text-muted); flex: 1;">
+            <p style="margin-bottom: 0.8rem; color: var(--text);">
+              <strong>Bóveda de Grounding Fáctico y Cero Alucinación:</strong>
+            </p>
+            <ul style="padding-left: 1.1rem; margin-bottom: 1rem;">
+              <li>Carga exclusiva de documentos verificados de la organización cliente.</li>
+              <li>Aislamiento de la red externa; respuestas forzadas únicamente a fuentes citadas.</li>
+              <li>Generación de resúmenes ejecutivos libres de supuestos infundados.</li>
+              <li>Fidelidad analítica superior al 99.8% en auditorías de texto.</li>
+            </ul>
+          </div>
+          <div style="background: var(--surface); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem;">
+            <strong>Salida Clave:</strong> Dossier de Síntesis Documental con Citas Cruzadas.
+          </div>
+        </div>
+
+        <!-- Pilar 2: Gemini API + Python -->
+        <div class="card triad-card node-gemini">
+          <div class="card-header">
+            <div>
+              <span class="pill-step" style="color: var(--accent-purple);">PILAR 2: RAZONAMIENTO</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 0.3rem;">Gemini API & Python</h3>
+            </div>
+            <span style="font-size: 1.8rem;">🧠</span>
+          </div>
+          <div style="font-size: 0.9rem; color: var(--text-muted); flex: 1;">
+            <p style="margin-bottom: 0.8rem; color: var(--text);">
+              <strong>Inferencia Contextual y Estructuración de Datos:</strong>
+            </p>
+            <ul style="padding-left: 1.1rem; margin-bottom: 1rem;">
+              <li>Pipelines en Python con validación estricta de esquemas Pydantic / JSON.</li>
+              <li>Modelado de cuellos de botella operativos y matrices de priorización.</li>
+              <li>Anonimización de datos mediante variables nominales fijas ($V_N$) y multiplicadores.</li>
+              <li>Cálculo de impacto multidimensional de las intervenciones propuestas.</li>
+            </ul>
+          </div>
+          <div style="background: var(--surface); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem;">
+            <strong>Salida Clave:</strong> Diagnóstico Estratégico en Formato JSON Estandarizado.
+          </div>
+        </div>
+
+        <!-- Pilar 3: Antigravity -->
+        <div class="card triad-card node-antigravity">
+          <div class="card-header">
+            <div>
+              <span class="pill-step" style="color: var(--accent-emerald);">PILAR 3: PROTOTIPADO</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 0.3rem;">Google Antigravity</h3>
+            </div>
+            <span style="font-size: 1.8rem;">🚀</span>
+          </div>
+          <div style="font-size: 0.9rem; color: var(--text-muted); flex: 1;">
+            <p style="margin-bottom: 0.8rem; color: var(--text);">
+              <strong>Orquestación Agéntica y Creación Rápida de MVPs:</strong>
+            </p>
+            <ul style="padding-left: 1.1rem; margin-bottom: 1rem;">
+              <li>Plataforma de desarrollo agéntico asistido con control determinista.</li>
+              <li>Generación instantánea de interfaces web interactivas (HTML5/CSS3/Vanilla JS).</li>
+              <li>Ejecución segura mediante sidecars sandboxed y tokens de autorización.</li>
+              <li>Depósito de reportes HOF en buzones de tránsito asíncrono para revisión L4.</li>
+            </ul>
+          </div>
+          <div style="background: var(--surface); padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); font-size: 0.8rem;">
+            <strong>Salida Clave:</strong> MVP Web Interactivo Desplegable en el Navegador del Cliente.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: PITCH Y AUDIO OVERVIEW -->
+    <section id="pitch-view" class="tab-view">
+      <div class="hero-banner">
+        <div class="hero-tag">Reproductor de Audio y Pitch Narrativo</div>
+        <h2 class="hero-title">Guión de Audio para CONIITEC 2026</h2>
+        <p style="font-size: 1.05rem; color: var(--text);">
+          Escucha la narración ejecutiva mediante síntesis de voz interactiva o lee el guión sincronizado para la defensa de póster ante el jurado calificador.
+        </p>
+      </div>
+
+      <div class="audio-player-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="font-size: 1.2rem; font-weight: 700;" id="audioTrackTitle">Pitch Ejecutivo de Alto Impacto (2 Minutos)</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);" id="audioTrackSubtitle">Defensa presencial de póster científico para jurado calificador</p>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn-secondary" id="selectPitchA" style="background: var(--surface-hover);">Pitch 2 Min (Jurado)</button>
+            <button class="btn-secondary" id="selectPitchB">Deep Dive 4 Min (NotebookLM)</button>
+          </div>
+        </div>
+
+        <div class="audio-controls">
+          <button class="btn-play" id="playAudioBtn">
+            <span id="playIcon">▶</span>
+            <span id="playText">Reproducir Audio</span>
+          </button>
+
+          <button class="btn-secondary" id="stopAudioBtn">
+            ⏹ Detener
+          </button>
+
+          <div class="waveform-visualizer" id="visualizer" style="flex: 1; min-width: 200px;">
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Velocidad:</span>
+            <select id="rateSelect" style="background: var(--surface-card); border: 1px solid var(--border); color: var(--text); padding: 0.4rem; border-radius: 6px;">
+              <option value="1">1.0×</option>
+              <option value="1.2">1.2×</option>
+              <option value="1.4">1.4×</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Teleprompter Sincronizado -->
+        <div class="teleprompter" id="teleprompterContent">
+          <!-- El contenido se inyecta dinámicamente según el guión seleccionado -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: PIPELINE MULTI-AGENTE EN VIVO -->
+    <section id="agent-sim-view" class="tab-view">
+      <div class="hero-banner">
+        <div class="hero-tag">Demostración en Tiempo Real</div>
+        <h2 class="hero-title">Simulador de Ejecución de Pipeline Multi-Agente Diime</h2>
+        <p style="font-size: 1.05rem; color: var(--text);">
+          Observa cómo interactúan los tres pilares de Google para generar un diagnóstico empresarial estructurado y un Handoff gobernado.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><span>💼</span> Seleccionar Caso de Estudio</h3>
+            <span class="badge">Intervención</span>
+          </div>
+
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-muted);">
+              Escenario Empresarial a Diagnosticar:
+            </label>
+            <select id="scenarioSelect" style="width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.75rem; border-radius: 8px; font-size: 0.95rem;">
+              <option value="mfg">1. PyME de Manufactura Ligera (Optimización de Tiempos Muertos y Cadena de Suministro)</option>
+              <option value="saas">2. Startup de Software B2B (Aceleración de Go-to-Market y Validación MVP)</option>
+              <option value="retail">3. Empresa de Logística y Distribución (Auditoría de Procesos y Despacho)</option>
+            </select>
+          </div>
+
+          <button class="btn-play" id="runPipelineBtn" style="width: 100%; justify-content: center;">
+            ⚡ Ejecutar Pipeline Agéntico Diime
+          </button>
+
+          <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            <strong style="color: var(--text);">Etapas de la Inferencia:</strong>
+            <ol style="padding-left: 1.2rem; margin-top: 0.5rem; line-height: 1.7;">
+              <li><strong>NotebookLM:</strong> Ingesta y filtrado de documentación técnica.</li>
+              <li><strong>Gemini API:</strong> Detección de cuellos de botella y esquema JSON.</li>
+              <li><strong>Antigravity:</strong> Síntesis de UI y depósito de reporte HOF en buzón.</li>
+              <li><strong>HITL L4:</strong> Ratificación de gobernanza humana.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card" style="background: #060913;">
+          <div class="card-header" style="border-bottom-color: #1e293b;">
+            <h3 class="card-title" style="color: #38bdf8; font-family: monospace; font-size: 1rem;">
+              <span>📟</span> Telemetría de Ejecución Agéntica
+            </h3>
+            <span class="badge" id="simStatusBadge" style="background: #0f172a; color: #38bdf8; border-color: #1e293b;">Listo</span>
+          </div>
+
+          <div class="agent-sim-console" id="consoleOutput">
+            <div class="console-log-line">
+              <span class="log-ts">[00:00:00]</span>
+              <span class="log-tag l4">[SYSTEM]</span>
+              <span>Kernel Diime-Ops inicializado. Esperando comando de ejecución...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <strong>Diime Consulting Core</strong> — Aceleración de Consultoría Estratégica con IA.
+      </div>
+      <div>
+        CONIITEC 2026 · Autor: Carlos Soto Santis · Arquitectura Tríada Google
+      </div>
+      <div>
+        Gobernanza: <em>«El Humano gobierna, la Máquina ejecuta»</em>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica Interactiva en Vanilla JavaScript -->
+  <script>
+    // 1. Manejo de Pestañas
+    const tabs = document.querySelectorAll('.nav-tab');
+    const views = document.querySelectorAll('.tab-view');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        views.forEach(v => v.classList.remove('active'));
+
+        tab.classList.add('active');
+        const targetView = document.getElementById(tab.getAttribute('data-tab'));
+        if (targetView) targetView.classList.add('active');
+      });
+    });
+
+    // 2. Cambio de Tema (Light / Dark)
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', nextTheme);
+      themeBtn.textContent = nextTheme === 'dark' ? '🌓' : '☀️';
+    });
+
+    // 3. Lógica del Simulador 60%
+    const docsSlider = document.getElementById('docsSlider');
+    const compSlider = document.getElementById('compSlider');
+    const mvpSlider = document.getElementById('mvpSlider');
+
+    const docsVal = document.getElementById('docsVal');
+    const compVal = document.getElementById('compVal');
+    const mvpVal = document.getElementById('mvpVal');
+
+    const tradWeeksElem = document.getElementById('tradWeeks');
+    const diimeWeeksElem = document.getElementById('diimeWeeks');
+    const tradBar = document.getElementById('tradBar');
+    const diimeBar = document.getElementById('diimeBar');
+    const timeSavedPct = document.getElementById('timeSavedPct');
+    const daysSaved = document.getElementById('daysSaved');
+    const velocityMult = document.getElementById('velocityMult');
+
+    function updateSimulator() {
+      const docs = parseInt(docsSlider.value);
+      const comp = parseInt(compSlider.value);
+      const mvp = parseInt(mvpSlider.value);
+
+      docsVal.textContent = `${docs} Documentos`;
+      
+      const compLabels = ['Baja (1-2 Áreas)', 'Media-Baja (3-4)', 'Media (5)', 'Media (6 Áreas)', 'Media-Alta (7)', 'Alta (8)', 'Alta Complejidad (9)', 'Máxima (10 Áreas)'];
+      compVal.textContent = compLabels[Math.min(comp - 1, compLabels.length - 1)] || `Nivel ${comp}`;
+
+      const mvpLabels = ['Prototipo Básico UI', 'Tablero Interactivo + Simulador', 'Plataforma Web Completa MVP'];
+      mvpVal.textContent = mvpLabels[mvp - 1] || 'Tablero Interactivo';
+
+      // Modelo matemático de estimación
+      // Semanas tradicionales: Base 6 semanas + factores
+      const tradWeeks = 6 + (docs * 0.15) + (comp * 0.7) + (mvp * 2.0);
+      
+      // Semanas Diime Consulting: Reducción del ~60%
+      const compFactor = 0.40; // 60% de reducción
+      const diimeWeeks = tradWeeks * compFactor;
+
+      const tradDays = Math.round(tradWeeks * 5);
+      const diimeDays = Math.round(diimeWeeks * 5);
+      const diffDays = tradDays - diimeDays;
+      const actualPct = (((tradDays - diimeDays) / tradDays) * 100).toFixed(1);
+      const mult = (tradDays / diimeDays).toFixed(1);
+
+      tradWeeksElem.textContent = `${tradWeeks.toFixed(1)} Semanas (${tradDays} Días)`;
+      diimeWeeksElem.textContent = `${diimeWeeks.toFixed(1)} Semanas (${diimeDays} Días)`;
+
+      tradBar.style.width = '100%';
+      tradBar.textContent = `Tradicional: ${tradDays} días`;
+
+      const diimePctWidth = Math.max(25, Math.min(100, (diimeDays / tradDays) * 100));
+      diimeBar.style.width = `${diimePctWidth}%`;
+      diimeBar.textContent = `Diime: ${diimeDays} días (~40%)`;
+
+      timeSavedPct.textContent = `${actualPct}%`;
+      daysSaved.textContent = diffDays;
+      velocityMult.textContent = `${mult}×`;
+    }
+
+    docsSlider.addEventListener('input', updateSimulator);
+    compSlider.addEventListener('input', updateSimulator);
+    mvpSlider.addEventListener('input', updateSimulator);
+    updateSimulator();
+
+    // 4. Lógica del Pitch & Audio Overview
+    const scriptA = [
+      { text: "«¿Por qué en plena era de la inteligencia artificial, una consultoría estratégica tradicional todavía tarda tres o cuatro meses en entregar un diagnóstico en diapositivas estáticas que nadie implementa?", delay: 5000 },
+      { text: "En Diime Consulting nos propusimos erradicar esa lentitud estructural uniendo el rigor de la ingeniería de software con la potencia de los modelos generativos.", delay: 5500 },
+      { text: "Presentamos hoy en CONIITEC 2026 un modelo operativo y tecnológico validado empíricamente, basado en lo que llamamos la Tríada Tecnológica Google.", delay: 5500 },
+      { text: "Primero: Google NotebookLM, nuestra bóveda de conocimiento curada, que aísla los documentos clave del cliente para lograr un grounding fáctico con cero alucinación.", delay: 6000 },
+      { text: "Segundo: Google Gemini API junto a Python, nuestro motor de razonamiento multietapa, que transforma datos complejos en diagnósticos ejecutivos estructurados bajo esquemas JSON validados.", delay: 6500 },
+      { text: "Y tercero: Google Antigravity, nuestro orquestador agéntico que en cuestión de horas —no meses— maqueta y despliega MVPs e interfaces web funcionales para que los directores prueben la solución en tiempo real.", delay: 7000 },
+      { text: "¿Cuál es el resultado tangible? Una reducción de hasta un 60% en los ciclos de entrega de consultoría estratégica. Procesos de 16 semanas hoy se completan en 4 a 6 semanas, sin sacrificar calidad.", delay: 6500 },
+      { text: "Y bajo una gobernanza estricta donde el Humano gobierna y la Máquina ejecuta, asegurando privacidad y anonimización de datos.", delay: 5000 },
+      { text: "Diime Consulting es una forja tecnológica real que democratiza la consultoría estratégica de clase mundial. ¡Los invito a probar nuestra demo interactiva! Muchas gracias.»", delay: 5500 }
+    ];
+
+    const scriptB = [
+      { text: "Alex: «Oye Sofía, he estado revisando el póster presentado por Carlos Soto en CONIITEC 2026. Hay un dato clave: una compresión del 60% en los tiempos de consultoría estratégica. ¿Cómo se pasa de 16 semanas a solo 4 semanas?»", delay: 6500 },
+      { text: "Sofía: «Es impresionante, Alex, pero es el resultado de sustituir el trabajo manual por una arquitectura agéntica determinista: la Tríada Tecnológica Google. No es un chatbot, sino tres herramientas orquestadas en una cadena de valor.»", delay: 7000 },
+      { text: "Alex: «Hablemos de NotebookLM. Normalmente se ve como un tomador de notas, ¿pero qué rol juega en Diime Consulting?»", delay: 5000 },
+      { text: "Sofía: «Juega el rol más crítico: el grounding sin alucinaciones. NotebookLM es una bóveda cerrada; solo responde basándose en fuentes primarias del cliente. Si no está en el documento, no lo inventa. Cero alucinación.»", delay: 7500 },
+      { text: "Alex: «Y luego entra la Gemini API con Python para la síntesis profunda y estructuración JSON.»", delay: 4500 },
+      { text: "Sofía: «Exacto. Con Gemini y Python se ejecutan pipelines que estructuran la información en esquemas JSON rigurosos, detectando cuellos de botella con validación Pydantic.»", delay: 6500 },
+      { text: "Alex: «Y el remate es Google Antigravity para crear el MVP interactivo en tiempo récord.»", delay: 4500 },
+      { text: "Sofía: «¡Esa es la clave! En lugar de un PDF de 200 páginas que nadie lee, Antigravity despliega una aplicación web en horas. El cliente interactúa con la solución directamente en el navegador.»", delay: 7000 },
+      { text: "Alex: «Y con el principio rector: El Humano gobierna, la Máquina ejecuta. Una arquitectura lista para escalar.»", delay: 5000 }
+    ];
+
+    let currentScript = scriptA;
+    let isPlaying = false;
+    let speechSynth = window.speechSynthesis;
+    let currentUtterance = null;
+    let currentLineIndex = 0;
+    let lineTimer = null;
+
+    const teleprompter = document.getElementById('teleprompterContent');
+    const playBtn = document.getElementById('playAudioBtn');
+    const stopBtn = document.getElementById('stopAudioBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+    const visualizer = document.getElementById('visualizer');
+    const trackTitle = document.getElementById('audioTrackTitle');
+    const trackSubtitle = document.getElementById('audioTrackSubtitle');
+
+    function renderTeleprompter() {
+      teleprompter.innerHTML = '';
+      currentScript.forEach((item, index) => {
+        const p = document.createElement('p');
+        p.id = `line-${index}`;
+        p.textContent = item.text;
+        teleprompter.appendChild(p);
+      });
+    }
+    renderTeleprompter();
+
+    document.getElementById('selectPitchA').addEventListener('click', (e) => {
+      stopAudio();
+      currentScript = scriptA;
+      trackTitle.textContent = "Pitch Ejecutivo de Alto Impacto (2 Minutos)";
+      trackSubtitle.textContent = "Defensa presencial de póster científico para jurado calificador";
+      e.target.style.background = 'var(--surface-hover)';
+      document.getElementById('selectPitchB').style.background = 'var(--surface-card)';
+      renderTeleprompter();
+    });
+
+    document.getElementById('selectPitchB').addEventListener('click', (e) => {
+      stopAudio();
+      currentScript = scriptB;
+      trackTitle.textContent = "Formato Deep Dive Audio Overview (NotebookLM Style / 4 Minutos)";
+      trackSubtitle.textContent = "Conversación especializada entre analista estratégico y arquitecta de IA";
+      e.target.style.background = 'var(--surface-hover)';
+      document.getElementById('selectPitchA').style.background = 'var(--surface-card)';
+      renderTeleprompter();
+    });
+
+    function highlightLine(idx) {
+      document.querySelectorAll('.teleprompter p').forEach(p => p.classList.remove('active-line'));
+      const activeP = document.getElementById(`line-${idx}`);
+      if (activeP) {
+        activeP.classList.add('active-line');
+        activeP.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function playAudioSequence() {
+      if (currentLineIndex >= currentScript.length) {
+        stopAudio();
+        return;
+      }
+
+      highlightLine(currentLineIndex);
+      const textToSpeak = currentScript[currentLineIndex].text.replace(/«|»|Alex:|Sofía:/g, '');
+
+      if ('speechSynthesis' in window) {
+        currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
+        currentUtterance.lang = 'es-ES';
+        currentUtterance.rate = parseFloat(document.getElementById('rateSelect').value) || 1.0;
+
+        currentUtterance.onend = () => {
+          if (isPlaying) {
+            currentLineIndex++;
+            playAudioSequence();
+          }
+        };
+
+        currentUtterance.onerror = () => {
+          // Fallback timer si la síntesis de voz no emite evento
+          lineTimer = setTimeout(() => {
+            if (isPlaying) {
+              currentLineIndex++;
+              playAudioSequence();
+            }
+          }, currentScript[currentLineIndex].delay);
+        };
+
+        speechSynth.speak(currentUtterance);
+      } else {
+        // Fallback para navegadores sin SpeechSynthesis
+        lineTimer = setTimeout(() => {
+          if (isPlaying) {
+            currentLineIndex++;
+            playAudioSequence();
+          }
+        }, currentScript[currentLineIndex].delay);
+      }
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        isPlaying = true;
+        playIcon.textContent = '⏸';
+        playText.textContent = 'Pausar Narración';
+        visualizer.classList.add('playing');
+        playAudioSequence();
+      } else {
+        pauseAudio();
+      }
+    });
+
+    function pauseAudio() {
+      isPlaying = false;
+      playIcon.textContent = '▶';
+      playText.textContent = 'Reanudar Narración';
+      visualizer.classList.remove('playing');
+      if (speechSynth) speechSynth.cancel();
+      if (lineTimer) clearTimeout(lineTimer);
+    }
+
+    function stopAudio() {
+      pauseAudio();
+      currentLineIndex = 0;
+      playText.textContent = 'Reproducir Audio';
+      document.querySelectorAll('.teleprompter p').forEach(p => p.classList.remove('active-line'));
+      teleprompter.scrollTop = 0;
+    }
+
+    stopBtn.addEventListener('click', stopAudio);
+
+    // 5. Lógica del Simulador de Pipeline Multi-Agente
+    const runPipelineBtn = document.getElementById('runPipelineBtn');
+    const consoleOutput = document.getElementById('consoleOutput');
+    const simStatusBadge = document.getElementById('simStatusBadge');
+
+    function logToConsole(tag, text, cssClass = '') {
+      const line = document.createElement('div');
+      line.className = 'console-log-line';
+      const now = new Date();
+      const timeStr = `[${now.toTimeString().split(' ')[0]}]`;
+
+      line.innerHTML = `
+        <span class="log-ts">${timeStr}</span>
+        <span class="log-tag ${cssClass}">${tag}</span>
+        <span>${text}</span>
+      `;
+      consoleOutput.appendChild(line);
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+
+    runPipelineBtn.addEventListener('click', () => {
+      runPipelineBtn.disabled = true;
+      runPipelineBtn.style.opacity = '0.6';
+      simStatusBadge.textContent = 'Ejecutando...';
+      simStatusBadge.style.color = 'var(--accent-amber)';
+
+      const scenario = document.getElementById('scenarioSelect').value;
+      const scenarioTitles = {
+        mfg: 'PyME Manufactura Ligera (Tiempos Muertos y Suministros)',
+        saas: 'Startup SaaS B2B (Go-to-Market y Validación MVP)',
+        retail: 'Logística y Distribución (Auditoría de Despacho)'
+      };
+
+      logToConsole('[INIT]', `Iniciando misión para caso: "${scenarioTitles[scenario]}"`, 'l4');
+
+      setTimeout(() => {
+        logToConsole('[NOTEBOOKLM]', 'Cargando bóveda documental aislada (24 archivos primarios indexados)...', 'notebooklm');
+        logToConsole('[NOTEBOOKLM]', 'Grounding validado: 0 referencias externas. Cero alucinación confirmada.', 'notebooklm');
+      }, 1000);
+
+      setTimeout(() => {
+        logToConsole('[GEMINI_API]', 'Llamada a Google Gemini API vía pipeline Python (SDK google-genai)...', 'gemini');
+        logToConsole('[GEMINI_API]', 'Extracción estructurada con esquema JSON Pydantic exitosa.', 'gemini');
+        logToConsole('[GEMINI_API]', 'Variables financieras anonimizadas: V_base nominal + M=1.8x.', 'gemini');
+        logToConsole('[GEMINI_API]', 'Cuello de botella detectado: latencia de 14.5 días en fase de aprobación manual.', 'gemini');
+      }, 2500);
+
+      setTimeout(() => {
+        logToConsole('[ANTIGRAVITY]', 'Invocando agente Coder para maquetación rápida de MVP...', 'antigravity');
+        logToConsole('[ANTIGRAVITY]', 'Generando vista de simulación interactiva HTML5/CSS3 en sandboxed sidecar.', 'antigravity');
+        logToConsole('[ANTIGRAVITY]', 'Reporte HOF depositado en N4_Inboxes_Transito/Inbox_DiimeConsulting/.', 'antigravity');
+      }, 4200);
+
+      setTimeout(() => {
+        logToConsole('[L4_HUMAN]', 'Revisión HITL completada por Carlos Soto (L4). Veredicto: APROBADO.', 'l4');
+        logToConsole('[RESULT]', 'Ciclo completado con 61.4% de compresión de entrega.', 'l4');
+        simStatusBadge.textContent = 'Completado con Éxito';
+        simStatusBadge.style.color = 'var(--accent-emerald)';
+        runPipelineBtn.disabled = false;
+        runPipelineBtn.style.opacity = '1';
+      }, 5800);
+    });
+  </script>
+</body>
+</html>
